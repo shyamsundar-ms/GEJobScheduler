@@ -1,0 +1,53 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    devtools:
+        restart:
+            enabled: true
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.mysql.jdbc.Driver
+        url: jdbc:mysql://ec2-35-161-39-44.us-west-2.compute.amazonaws.com:3306/uat_growth_crawler
+        username: Growthenabler
+        password: G30WthEn@813r
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: true
+        properties:
+                hibernate.cache.use_second_level_cache: false
+                hibernate.cache.use_query_cache: false
+                hibernate.generate_statistics: true
+                hibernate.show_sql: true
+                hibernate.format_sql: true
+# ===================================================================
+server:
+    port: 8080
+# ===================================================================
+quartz:
+    enabled: true
+# ===================================================================
+cron:
+    frequency: 0 50 6 1/1 * ?
+# ===================================================================
+crunchbase:
+    userkey: 8e5cbbe23d7afdf651b1ac2bb6dc7581
+# ===================================================================
+solr:
+    coreurl: http://ec2-35-161-39-44.us-west-2.compute.amazonaws.com:8983/solr/ge_uat_core
+# ===================================================================
+csv:
+    download:
+          path: /home/ec2-user/GrowthEnabler/Download
+# ===================================================================
